@@ -43,7 +43,7 @@ curl -X POST http://scrapeapi.pangolinfo.com/api/v1/auth \
 #### Amazon 商品详情抓取
 
 ```bash
-curl -X POST http://scrapeapi.pangolinfo.com/api/v1 \
+curl -X POST http://scrapeapi.pangolinfo.com/api/v1/scrape \
   -H 'Content-Type: application/json' \
   -H 'Authorization: Bearer YOUR_TOKEN' \
   -d '{
@@ -59,7 +59,7 @@ curl -X POST http://scrapeapi.pangolinfo.com/api/v1 \
 #### 批量数据抓取
 
 ```bash
-curl -X POST http://scrapeapi.pangolinfo.com/api/v1/batch \
+curl -X POST http://scrapeapi.pangolinfo.com/api/v1/scrape/batch \
   -H 'Content-Type: application/json' \
   -H 'Authorization: Bearer YOUR_TOKEN' \
   -d '{
@@ -67,7 +67,7 @@ curl -X POST http://scrapeapi.pangolinfo.com/api/v1/batch \
       "https://www.amazon.com/dp/PRODUCT1",
       "https://www.amazon.com/dp/PRODUCT2"
     ],
-    "formats": ["json", "markdown"]
+    "formats": ["markdown"]
   }'
 ```
 
@@ -80,7 +80,7 @@ import json
 class ScrapeAPI:
     def __init__(self, token):
         self.token = token
-        self.base_url = "http://scrapeapi.pangolinfo.com/api/v1"
+        self.base_url = "http://scrapeapi.pangolinfo.com/api/v1/scrape"
         self.headers = {
             'Content-Type': 'application/json',
             'Authorization': f'Bearer {token}'
@@ -136,7 +136,7 @@ const axios = require('axios');
 class ScrapeAPI {
     constructor(token) {
         this.token = token;
-        this.baseURL = 'http://scrapeapi.pangolinfo.com/api/v1';
+        this.baseURL = 'http://scrapeapi.pangolinfo.com/api/v1/scrape';
         this.headers = {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
