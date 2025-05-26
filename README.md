@@ -2,7 +2,8 @@
 Powerful Scrape API for Amazon, Walmart, Shopify, Shopee, eBay. Get product details, rankings, HTML, JSON, and Markdown. 专为电商卖家、数据服务商和工具开发者设计的数据采集API。
 # 🚀 Pangolin Scrape API - 电商数据采集利器 
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Docs](https://img.shields.io/badge/API%20Docs-Read%20Here-blue)](https://docs.pangolinfo.com) [![Contact Us](https://img.shields.io/badge/Contact-Email%20Us-green)](mailto:your-contact-email@example.com) ** Scrape API 是一款专为跨境电商卖家 (亚马逊、沃尔玛、Shopify、Shopee、eBay)、数据服务商 (如卖家精灵、SIF类似需求) 和跨境工具开发者设计的强大数据采集API。轻松获取商品详情、榜单排名、评论、价格等任何公开的电商平台数据。**
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Docs](https://img.shields.io/badge/API%20Docs-Read%20Here-blue)](https://docs.pangolinfo.com) [![Contact Us](https://img.shields.io/badge/Contact-Email%20Us-green)](mailto:your-contact-email@example.com) 
+** Scrape API 是一款专为跨境电商卖家 (亚马逊、沃尔玛、Shopify、Shopee、eBay)、数据服务商 (如卖家精灵、SIF类似需求) 和跨境工具开发者设计的强大数据采集API。轻松获取商品详情、榜单排名、评论、价格等任何公开的电商平台数据。**
 
 **支持的电商平台包括：亚马逊 (Amazon), 沃尔玛 (Walmart), Shopify, Shopee, eBay 等主流站点。**
 
