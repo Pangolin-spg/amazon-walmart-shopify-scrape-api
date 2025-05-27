@@ -30,7 +30,7 @@ Scrape API 可动态兼容Amazon等各类电商页面结构变化。该接口通
 
 ---
 
-## 旗舰级开源：Amazon 关键词页面解析引擎核心 (Open-Source Amazon Keyword Page Parser)
+## 最好的开源亚马逊解析器 (Open-Source Amazon Keyword Page Parser)
 
 我们很高兴与社区分享一部分针对 **Amazon 关键词搜索结果页面** 的解析代码。这部分开源代码旨在帮助开发者理解和快速上手如何从 Amazon 关键词搜索结果的 HTML 页面中提取结构化数据。
 
