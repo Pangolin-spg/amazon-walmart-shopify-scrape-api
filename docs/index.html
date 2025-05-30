@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>电商数据采集 API - Amazon, Walmart, Shopify | Pangolin Scrape API</title>
+    <meta name="description" content="Pangolin Scrape API 是一款专业的跨境电商数据采集解决方案，支持Amazon、Walmart、Shopify、eBay、Shopee等平台。提供动态适配、高效稳定的产品数据、价格、评论爬虫API服务。">
+    <meta name="keywords" content="电商API, 数据采集, 爬虫API, 亚马逊API, 沃尔玛API, Shopify API, eBay API, Shopee API, Pangolin Scrape, 跨境电商, 数据解决方案, 产品数据, 价格监控, 电商爬虫, API接口, Pangolin Info Tech">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            line-height: 1.8;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #343a40;
+        }
+        .container {
+            width: 85%;
+            max-width: 1200px;
+            margin: auto;
+            overflow: hidden;
+            padding: 20px;
+        }
+        header {
+            background: #343a40; /* Darker header */
+            color: #fff;
+            padding: 2rem 0;
+            text-align: center;
+            border-bottom: #007bff 5px solid; /* Blue accent */
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.8em;
+            font-weight: 600;
+        }
+        header .subtitle {
+            font-size: 1.3em;
+            margin-top: 10px;
+            color: #adb5bd; /* Lighter subtitle */
+        }
+        .badges {
+            margin-top: 20px;
+        }
+        .badges img {
+            margin: 0 5px;
+        }
+        nav {
+            background: #495057; /* Slightly lighter than header */
+            color: #fff;
+            padding: 0.8rem 0;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            font-size: 1.1em;
+            transition: background-color 0.3s ease;
+        }
+        nav a:hover {
+            background-color: #007bff; /* Blue hover */
+        }
+        section {
+            padding: 40px 20px;
+            margin-bottom: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.07);
+        }
+        section h2 {
+            text-align: center;
+            color: #007bff; /* Blue headings */
+            font-size: 2.2em;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        section h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: #007bff;
+            margin: 10px auto 0;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .grid-item, .feature-item, .use-case-item {
+            background-color: #f8f9fa; /* Light background for items */
+            padding: 20px;
+            border-radius: 6px;
+            border-left: 4px solid #007bff;
+        }
+        .feature-item h3, .use-case-item h3 {
+            color: #343a40;
+            margin-top: 0;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        ul li {
+            padding: 8px 0;
+            border-bottom: 1px dotted #eee;
+        }
+        ul li::before {
+            content: "✓ "; /* Checkmark */
+            color: #28a745; /* Green checkmark */
+            font-weight: bold;
+            margin-right: 8px;
+        }
+        .cta-button {
+            display: inline-block;
+            background: #007bff;
+            color: #fff;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            margin: 10px 5px;
+            border: none;
+        }
+        .cta-button:hover {
+            background: #0056b3; /* Darker blue on hover */
+            transform: translateY(-2px);
+        }
+        .cta-button.secondary {
+            background: #6c757d; /* Grey for secondary actions */
+        }
+        .cta-button.secondary:hover {
+            background: #545b62;
+        }
+        .text-center {
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table th, table td {
+            border: 1px solid #dee2e6;
+            padding: 12px;
+            text-align: left;
+        }
+        table th {
+            background-color: #e9ecef;
+            font-weight: 600;
+        }
+        pre {
+            background: #212529; /* Dark background for code */
+            color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+            font-size: 0.9em;
+        }
+        code {
+             font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+        }
+        .highlight {
+            color: #007bff;
+            font-weight: bold;
+        }
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            background: #343a40;
+            color: #adb5bd;
+            margin-top: 30px;
+        }
+        footer p {
+            margin: 5px 0;
+        }
+        footer a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>🚀 电商数据采集 API</h1>
+            <p class="subtitle">Pangolin Scrape API - 专业的跨境电商数据解决方案</p>
+            <div class="badges">
+                <img src="https://img.shields.io/badge/API-在线-brightgreen" alt="API Status Online">
+                <img src="https://img.shields.io/badge/支持平台-Amazon%20|%20Walmart%20|%20eBay%20|%20Shopify-blue" alt="Supported Platforms">
+                <img src="https://img.shields.io/badge/数据格式-JSON%20|%20HTML%20|%20Markdown-orange" alt="Data Formats">
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <a href="#about">关于我们</a>
+        <a href="#advantages">核心优势</a>
+        <a href="#platforms">支持平台</a>
+        <a href="#quick-start">快速开始</a>
+        <a href="#opensource">开源解析器</a>
+        <a href="https://docs.pangolinfo.com" target="_blank">API文档</a>
+        <a href="https://github.com/Pangolin-spg/amazon-walmart-shopify-scrape-api" target="_blank">GitHub</a>
+    </nav>
+
+    <div class="container">
+        <section id="about">
+            <h2>📖 关于项目</h2>
+            <p>
+                <strong>Pangolin Scrape API</strong> 由 <span class="highlight">PANGOLIN INFO TECH PTE. LTD.</span> 精心打造，是一款专为<span class="highlight">跨境电商卖家、数据服务商和工具开发者</span>设计的强大、稳定、高效的数据采集API。
+                我们的电商数据接口通过智能识别算法，能动态兼容 Amazon、Walmart 等各类电商平台页面结构的细微变化，自动识别并提取相关的产品数据，如商品标题、折扣信息、实时价格、库存状况和详细描述等。
+            </p>
+            <p>
+                开发者无需再为目标页面DOM结构的频繁变更而烦恼，Pangolin Scrape API 系统将持续维护和更新数据解析逻辑，从而显著降低您在<span class="highlight">电商数据集成与维护</span>方面的成本。通过简单的API密钥调用，即可快速获取实时、准确的电商数据。
+            </p>
+            <div class="text-center">
+                 <a href="https://www.pangolinfo.com" target="_blank" class="cta-button">访问官网</a>
+                 <a href="https://docs.pangolinfo.com" target="_blank" class="cta-button secondary">查看完整文档</a>
+            </div>
+        </section>
+
+        <section id="advantages">
+            <h2>🎯 核心优势</h2>
+            <div class="grid">
+                <div class="grid-item">
+                    <h3>🔄 动态适配</h3>
+                    <p>智能识别算法自动适配页面结构变化，无需担心目标网站DOM更新导致解析失效。</p>
+                </div>
+                <div class="grid-item">
+                    <h3>⚡ 高效稳定</h3>
+                    <p>承诺99.9% API可用性，提供毫秒级的快速响应时间，保障数据获取的及时性。</p>
+                </div>
+                <div class="grid-item">
+                    <h3>🌍 多平台支持</h3>
+                    <p>广泛覆盖 <span class="highlight">Amazon (亚马逊), Walmart (沃尔玛), eBay (易贝), Shopify, Shopee</span> 等主流电商平台。</p>
+                </div>
+                <div class="grid-item">
+                    <h3>📊 多格式输出</h3>
+                    <p>支持 JSON, HTML, Markdown 等多种数据格式灵活选择，方便数据集成与后续处理。</p>
+                </div>
+                <div class="grid-item">
+                    <h3>🔧 零维护成本</h3>
+                    <p>系统自动维护和升级解析逻辑，开发者可专注于核心业务开发，无需投入额外维护精力。</p>
+                </div>
+                 <div class="grid-item">
+                    <h3>💡 智能反爬</h3>
+                    <p>内建多种智能反爬虫策略，结合全球分布式节点，有效确保数据抓取成功率。</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="platforms">
+            <h2>🛍️ 支持的电商平台与数据</h2>
+            <p>我们支持从各大主流电商平台采集丰富的商品数据字段，满足您的多样化业务需求。以下为部分示例：</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>平台</th>
+                        <th>支持页面类型</th>
+                        <th>主要数据字段</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Amazon (亚马逊)</strong></td>
+                        <td>商品详情、关键词搜索、分类列表、卖家商品、热销榜、新品榜</td>
+                        <td>ASIN码、标题、价格、评分、评论数、图片、销量、卖家信息、商品描述等 30+ 字段</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Walmart (沃尔玛)</strong></td>
+                        <td>商品详情、关键词搜索</td>
+                        <td>商品ID、标题、价格、评分、评论数、图片、尺寸、颜色等</td>
+                    </tr>
+                    <tr>
+                        <td><strong>eBay (易贝)</strong></td>
+                        <td>商品详情、搜索结果</td>
+                        <td>商品ID、标题、价格、卖家信息、图片等</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Shopify</strong></td>
+                        <td>商品详情、店铺数据</td>
+                        <td>商品信息、库存、价格、变体等</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="text-center" style="margin-top:20px;">更多平台和详细字段支持，请<a href="https://docs.pangolinfo.com" target="_blank" class="highlight">查阅官方API文档</a>。</p>
+        </section>
+
+        <section id="quick-start">
+            <h2>🚀 快速开始</h2>
+            <p>集成 Pangolin Scrape API 非常简单。只需几步，即可开始采集您需要的电商数据：</p>
+            <ol>
+                <li><strong>获取 API 密钥:</strong> <br>首先，您需要注册并获取您的专属 API 密钥。请访问 <a href="http://scrapeapi.pangolinfo.com/api/v1/auth" target="_blank" class="highlight">授权接口</a> 或官网指引操作。
+                    <pre><code># 示例：获取Token (请替换为您的邮箱和密码)
+curl -X POST http://scrapeapi.pangolinfo.com/api/v1/auth \
+  -H 'Content-Type: application/json' \
+  -d '{"email": "your-email@example.com", "password": "your-password"}'</code></pre>
+                </li>
+                <li><strong>调用 API 接口:</strong> <br>使用获取到的 Token，即可调用数据采集接口。我们提供了详细的 API 文档和多语言 SDK 示例 (Python, Node.js) 帮助您快速上手。
+                    <pre><code># 示例：Amazon 商品详情抓取 (请替换 YOUR_TOKEN 和商品链接)
+curl -X POST http://scrapeapi.pangolinfo.com/api/v1/scrape \
+  -H 'Content-Type: application/json' \
+  -H 'Authorization: Bearer YOUR_TOKEN' \
+  -d '{
+    "url": "https://www.amazon.com/dp/B0DYTF8L2W",
+    "parserName": "amzProductDetail",
+    "formats": ["json"],
+    "bizContext": { "zipcode": "10041" }
+  }'</code></pre>
+                </li>
+            </ol>
+            <p>想了解更多关于<span class="highlight">批量数据抓取、异步处理、Python/Node.js SDK</span>以及各平台解析器的详细用法吗？</p>
+            <div class="text-center">
+                <a href="https://github.com/Pangolin-spg/amazon-walmart-shopify-scrape-api#readme" target="_blank" class="cta-button">查看 GitHub README 详细指南</a>
+                <a href="https://docs.pangolinfo.com" target="_blank" class="cta-button secondary">完整 API 文档</a>
+            </div>
+        </section>
+
+        <section id="opensource">
+            <h2>💡 开源 Amazon 关键词页面解析器</h2>
+            <p>
+                我们乐于与开发者社区分享，因此开源了针对 <span class="highlight">Amazon 关键词搜索结果页面</span> 的部分解析代码。这份开源代码 (Go语言实现) 旨在帮助开发者理解如何从本地已有的 Amazon 搜索结果 HTML 源文件中提取结构化的产品数据。
+            </p>
+            <p><strong>请注意：</strong></p>
+            <ul>
+                <li>此开源解析器专注于<strong>解析本地 HTML 文件</strong>，它本身<strong>不包含</strong>网络请求、IP代理管理或验证码自动处理等复杂的数据采集功能。</li>
+                <li>该解析器基于特定时期的 Amazon 页面结构编写。尽管我们会尽力维护，但电商网站页面结构可能随时发生变化，届时您可能需要根据实际情况自行调整代码。</li>
+                <li>具体用法，请参考仓库中的 <code>parser_test.go</code> 文件。</li>
+            </ul>
+            <div class="text-center">
+                <a href="https://github.com/Pangolin-spg/amazon-walmart-shopify-scrape-api" target="_blank" class="cta-button">前往 GitHub 查看开源代码</a>
+            </div>
+        </section>
+
+        <section id="use-cases">
+            <h2>🤝 适用场景</h2>
+            <p>Pangolin Scrape API 能够广泛应用于各种跨境电商业务场景：</p>
+            <div class="grid">
+                <div class="use-case-item">
+                    <h3>🎯 跨境电商卖家</h3>
+                    <p>进行选品分析、批量获取竞品数据、实时价格监控、跟踪热销商品库存状态、获取用户评价数据以优化产品。</p>
+                </div>
+                <div class="use-case-item">
+                    <h3>🔧 工具开发商</h3>
+                    <p>为卖家工具（如卖家精灵、SIF等）提供强大的数据支撑，构建商品市场分析和趋势预测工具，开发自动化运营系统。</p>
+                </div>
+                <div class="use-case-item">
+                    <h3>📊 数据服务商</h3>
+                    <p>获取原始电商数据进行二次清洗和加工，生成深度行业分析报告，或将我们的 API 集成到您现有的数据平台中。</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="contact" class="text-center">
+            <h2>📞 联系与支持</h2>
+            <p>如果您对我们的电商数据采集 API 感兴趣，或有任何疑问、商务合作及技术支持需求，欢迎通过以下方式联系我们：</p>
+            <p><strong>商务合作:</strong> <a href="mailto:charon@pangolinfo.com">charon@pangolinfo.com</a></p>
+            <p><strong>技术支持:</strong> <a href="mailto:shiyang@pangolinfo.com">shiyang@pangolinfo.com</a></p>
+            <p><strong>微信咨询:</strong> Pangolin-Scraper (添加时请备注: GitHub-API咨询)</p>
+            <p>我们致力于让数据采集变得简单，让跨境电商更高效！</p>
+            <a href="https://github.com/Pangolin-spg/amazon-walmart-shopify-scrape-api" target="_blank" class="cta-button">⭐ Star 我们在 GitHub</a>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2024-<script>document.write(new Date().getFullYear())</script> PANGOLIN INFO TECH PTE. LTD. &amp; Pangolin-spg. 保留所有权利。</p>
+        <p>
+            <a href="https://www.pangolinfo.com" target="_blank">官方网站</a> | 
+            <a href="https://docs.pangolinfo.com" target="_blank">API 文档</a> | 
+            <a href="https://github.com/Pangolin-spg/amazon-walmart-shopify-scrape-api" target="_blank">GitHub 项目</a>
+        </p>
+    </footer>
+</body>
+</html>
