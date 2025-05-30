@@ -7,137 +7,164 @@
     <meta name="description" content="Pangolin Scrape API 是一款专业的跨境电商数据采集解决方案，支持Amazon、Walmart、Shopify、eBay、Shopee等平台。提供动态适配、高效稳定的产品数据、价格、评论爬虫API服务。">
     <meta name="keywords" content="电商API, 数据采集, 爬虫API, 亚马逊API, 沃尔玛API, Shopify API, eBay API, Shopee API, Pangolin Scrape, 跨境电商, 数据解决方案, 产品数据, 价格监控, 电商爬虫, API接口, Pangolin Info Tech">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-            line-height: 1.8;
+            font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            line-height: 1.7; /* 调整行高以便阅读 */
             margin: 0;
             padding: 0;
-            background-color: #f8f9fa;
-            color: #343a40;
+            background-color: #f4f7f9; /* 一个柔和的浅灰色背景 */
+            color: #333; /* 默认文字颜色调整为深灰，而不是纯黑 */
         }
         .container {
-            width: 85%;
+            width: 90%; /* 稍微加宽容器 */
             max-width: 1200px;
             margin: auto;
             overflow: hidden;
-            padding: 20px;
+            padding: 0 20px; /* 左右内边距 */
         }
         header {
-            background: #343a40; /* Darker header */
+            background: #0C254B; /* 深海军蓝背景 */
             color: #fff;
             padding: 2rem 0;
             text-align: center;
-            border-bottom: #007bff 5px solid; /* Blue accent */
+            /* 如果您有SVG背景图，可以尝试在这里应用，例如:
+            background-image: url('path/to/your-background.svg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            */
         }
         header h1 {
             margin: 0;
-            font-size: 2.8em;
-            font-weight: 600;
+            font-size: 2.6em; /* 调整标题大小 */
+            font-weight: 700; /* 使用较粗的字重 */
         }
         header .subtitle {
-            font-size: 1.3em;
+            font-size: 1.2em;
             margin-top: 10px;
-            color: #adb5bd; /* Lighter subtitle */
+            color: #a9b8c6; /* 调整副标题颜色以在深色背景上更柔和 */
+            font-weight: 300;
         }
         .badges {
-            margin-top: 20px;
+            margin-top: 25px;
         }
         .badges img {
-            margin: 0 5px;
+            margin: 0 8px; /* 增加徽章间距 */
         }
         nav {
-            background: #495057; /* Slightly lighter than header */
+            background: #081E3A; /* 比页头稍浅一点的深蓝 */
             color: #fff;
             padding: 0.8rem 0;
             text-align: center;
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
         nav a {
-            color: #fff;
+            color: #e0e0e0; /* 导航链接默认颜色 */
             text-decoration: none;
-            padding: 10px 20px;
-            font-size: 1.1em;
-            transition: background-color 0.3s ease;
+            padding: 10px 22px; /* 调整导航内边距 */
+            font-size: 1.05em; /* 调整导航字体大小 */
+            font-weight: 500;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
-        nav a:hover {
-            background-color: #007bff; /* Blue hover */
+        nav a:hover, nav a.active { /* 假设您会用JS或手动给当前页面导航加active class */
+            background-color: #246FDD; /* 亮蓝色高亮 */
+            color: #fff;
         }
         section {
-            padding: 40px 20px;
-            margin-bottom: 20px;
+            padding: 50px 20px; /* 增加区块上下内边距 */
+            margin-bottom: 25px; /* 增加区块间距 */
             background-color: #fff;
             border-radius: 8px;
-            box-shadow: 0 0 15px rgba(0,0,0,0.07);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08); /* 调整阴影效果 */
         }
         section h2 {
             text-align: center;
-            color: #007bff; /* Blue headings */
-            font-size: 2.2em;
-            margin-bottom: 30px;
+            color: #0C254B; /* 主要标题使用深海军蓝 */
+            font-size: 2em; /* 调整章节标题大小 */
+            font-weight: 700;
+            margin-bottom: 35px;
             position: relative;
         }
-        section h2::after {
+        section h2::after { /* 标题下的装饰线 */
             content: '';
             display: block;
-            width: 60px;
-            height: 3px;
-            background: #007bff;
-            margin: 10px auto 0;
+            width: 70px;
+            height: 4px;
+            background: #246FDD; /* 装饰线使用亮蓝色 */
+            margin: 12px auto 0;
+            border-radius: 2px;
         }
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* 调整网格项最小宽度 */
+            gap: 25px; /* 调整网格间距 */
         }
         .grid-item, .feature-item, .use-case-item {
-            background-color: #f8f9fa; /* Light background for items */
-            padding: 20px;
+            background-color: #f8f9fa;
+            padding: 25px;
             border-radius: 6px;
-            border-left: 4px solid #007bff;
+            border-left: 5px solid #246FDD; /* 左边框使用亮蓝色 */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .grid-item:hover, .feature-item:hover, .use-case-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
         }
         .feature-item h3, .use-case-item h3 {
-            color: #343a40;
+            color: #0C254B; /* 网格项标题颜色 */
             margin-top: 0;
+            font-size: 1.3em;
+            font-weight: 500;
         }
         ul {
             list-style: none;
             padding: 0;
         }
         ul li {
-            padding: 8px 0;
-            border-bottom: 1px dotted #eee;
+            padding: 10px 0; /* 增加列表项内边距 */
+            border-bottom: 1px dashed #e0e0e0; /* 虚线分隔 */
+            color: #576168; /* 列表项文字使用灰蓝色 */
+        }
+        ul li:last-child {
+            border-bottom: none;
         }
         ul li::before {
-            content: "✓ "; /* Checkmark */
-            color: #28a745; /* Green checkmark */
+            content: "✓";
+            color: #246FDD; /* 勾选标记使用亮蓝色 */
             font-weight: bold;
-            margin-right: 8px;
+            margin-right: 10px;
+            font-size: 1.1em;
         }
         .cta-button {
             display: inline-block;
-            background: #007bff;
+            background: #246FDD; /* 主要按钮使用亮蓝色 */
             color: #fff;
-            padding: 12px 25px;
+            padding: 14px 28px; /* 调整按钮内边距 */
             text-decoration: none;
             border-radius: 5px;
             font-size: 1.1em;
-            font-weight: bold;
+            font-weight: 500; /* 按钮文字稍粗 */
             transition: background-color 0.3s ease, transform 0.2s ease;
             margin: 10px 5px;
             border: none;
+            box-shadow: 0 2px 5px rgba(36, 111, 221, 0.3);
         }
         .cta-button:hover {
-            background: #0056b3; /* Darker blue on hover */
+            background: #1A5CBF; /* 亮蓝色加深 */
             transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(36, 111, 221, 0.4);
         }
         .cta-button.secondary {
-            background: #6c757d; /* Grey for secondary actions */
+            background: #576168; /* 次要按钮使用灰蓝色 */
+            box-shadow: 0 2px 5px rgba(87, 97, 104, 0.3);
         }
         .cta-button.secondary:hover {
-            background: #545b62;
+            background: #434B50; /* 灰蓝色加深 */
+            box-shadow: 0 4px 10px rgba(87, 97, 104, 0.4);
         }
         .text-center {
             text-align: center;
@@ -145,49 +172,72 @@
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 20px;
+            margin-top: 25px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
         table th, table td {
-            border: 1px solid #dee2e6;
-            padding: 12px;
+            border: 1px solid #e0e0e0; /* 表格边框颜色变浅 */
+            padding: 14px; /* 调整表格内边距 */
             text-align: left;
+            color: #576168; /* 表格文字颜色 */
         }
         table th {
-            background-color: #e9ecef;
-            font-weight: 600;
+            background-color: #e9eff3; /* 表头背景色调整 */
+            font-weight: 500; /* 表头字重 */
+            color: #0C254B; /* 表头文字颜色 */
         }
         pre {
-            background: #212529; /* Dark background for code */
-            color: #f8f9fa;
-            padding: 15px;
-            border-radius: 5px;
+            background: #081E3A; /* 代码块背景使用深色 */
+            color: #e0e0e0; /* 代码块文字颜色 */
+            padding: 18px; /* 调整代码块内边距 */
+            border-radius: 6px;
             overflow-x: auto;
             font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
             font-size: 0.9em;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.2);
         }
         code {
              font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+             color: #246FDD; /* 行内代码也给个颜色 */
+             background-color: rgba(36, 111, 221, 0.05); /* 行内代码背景 */
+             padding: 2px 5px;
+             border-radius: 3px;
         }
-        .highlight {
-            color: #007bff;
-            font-weight: bold;
+        .highlight { /* 高亮文本，使用您的主色调 */
+            color: #246FDD;
+            font-weight: 500;
         }
         footer {
             text-align: center;
             padding: 30px 20px;
-            background: #343a40;
-            color: #adb5bd;
+            background: #0C254B; /* 页脚使用深海军蓝 */
+            color: #a9b8c6; /* 页脚文字颜色 */
             margin-top: 30px;
         }
         footer p {
-            margin: 5px 0;
+            margin: 8px 0;
+            font-weight: 300;
         }
         footer a {
-            color: #007bff;
+            color: #246FDD; /* 页脚链接使用亮蓝色 */
             text-decoration: none;
+            font-weight: 400;
         }
         footer a:hover {
             text-decoration: underline;
+            color: #fff;
+        }
+
+        /* 针对背景图SVG的建议占位符 */
+        .hero-section-with-svg-background {
+            /* 如果您想将SVG背景图应用到某个特定区域 */
+            /* background-image: url('your-svg-file.svg'); */
+            /* background-color: #0C254B; */ /* SVG加载失败时的备用颜色 */
+            /* background-size: cover; */
+            /* background-position: center; */
+            /* background-repeat: no-repeat; */
+            /* padding: 100px 0; */ /* 示例内边距 */
+            /* color: #fff; */ /* 确保文字在背景上可读 */
         }
     </style>
 </head>
@@ -198,8 +248,7 @@
             <p class="subtitle">Pangolin Scrape API - 专业的跨境电商数据解决方案</p>
             <div class="badges">
                 <img src="https://img.shields.io/badge/API-在线-brightgreen" alt="API Status Online">
-                <img src="https://img.shields.io/badge/支持平台-Amazon%20|%20Walmart%20|%20eBay%20|%20Shopify-blue" alt="Supported Platforms">
-                <img src="https://img.shields.io/badge/数据格式-JSON%20|%20HTML%20|%20Markdown-orange" alt="Data Formats">
+                <img src="https://img.shields.io/badge/支持平台-Amazon%20|%20Walmart%20|%20eBay%20|%20Shopify-blue" alt="Supported Platforms"> <img src="https://img.shields.io/badge/数据格式-JSON%20|%20HTML%20|%20Markdown-orange" alt="Data Formats">
             </div>
         </div>
     </header>
@@ -375,7 +424,7 @@ curl -X POST http://scrapeapi.pangolinfo.com/api/v1/scrape \
     </div>
 
     <footer>
-        <p>&copy; 2024-<script>document.write(new Date().getFullYear())</script> PANGOLIN INFO TECH PTE. LTD. &amp; Pangolin-spg. 保留所有权利。</p>
+        <p>&copy; <script>document.write(new Date().getFullYear())</script> PANGOLIN INFO TECH PTE. LTD. &amp; Pangolin-spg. 保留所有权利。</p>
         <p>
             <a href="https://www.pangolinfo.com" target="_blank">官方网站</a> | 
             <a href="https://docs.pangolinfo.com" target="_blank">API 文档</a> | 
