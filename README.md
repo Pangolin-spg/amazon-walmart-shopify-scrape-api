@@ -1,13 +1,39 @@
-# 🚀 电商数据采集 API - 专业的跨境电商数据解决方案
+# 🚀 电商数据采集 API - 免费Amazon/Walmart数据提取工具
 
 [![API Status](https://img.shields.io/badge/API-在线-brightgreen)](https://docs.pangolinfo.com)
 [![支持平台](https://img.shields.io/badge/支持平台-Amazon%20|%20Walmart%20|%20eBay%20|%20Shopify-blue)](https://www.pangolinfo.com)
 [![数据格式](https://img.shields.io/badge/数据格式-JSON%20|%20HTML%20|%20Markdown-orange)](https://docs.pangolinfo.com)
 
+## 🎁 **免费福利 - 限时提供**
+
+🔥 **为开源社区提供特别优惠：**
+- ✅ **免费获取完整解析模板代码**
+- ✅ **200次免费API调用额度**  
+- ✅ **技术支持和使用指导**
+- ✅ **无需信用卡，即刻开始**
+
+### 📞 **获取免费资源 - 联系我们**
+
+#### 🔥 快速咨询（推荐）
+- **微信**: `Pangolin-Scraper` 
+  - 添加备注：`GitHub免费额度`
+  - 工作时间内秒回，提供技术支持
+
+#### 📧 邮件联系
+- **技术支持**: shiyang@pangolinfo.com
+- **商务合作**: charon@pangolinfo.com
+- **响应时间**: 24小时内回复
+
+#### 🌐 在线资源
+- **项目文档**: [docs.pangolinfo.com](https://docs.pangolinfo.com)
+- **官方网站**: [www.pangolinfo.com](https://www.pangolinfo.com)
+
+---
+
 ## 📖 项目简介
 
 **Pangolin Scrape API by PANGOLIN INFO TECH PTE. LTD.是一款专为跨境电商卖家、数据服务商和工具开发者设计的强大、稳定、高效的数据采集API。**
-Scrape API 可动态兼容Amazon等各类电商页面结构变化。该接口通过智能识别算法自动识别并提取相关产品数据，如标题、折扣、价格、可用性和描述等。开发者无需关注目标页面DOM结构变更，系统将持续维护数据解析逻辑，显著降低电商数据集成与维护成本，支持通过API密钥快速调用并获取实时数据。 [cite: 1]
+Scrape API 可动态兼容Amazon等各类电商页面结构变化。该接口通过智能识别算法自动识别并提取相关产品数据，如标题、折扣、价格、可用性和描述等。开发者无需关注目标页面DOM结构变更，系统将持续维护数据解析逻辑，显著降低电商数据集成与维护成本，支持通过API密钥快速调用并获取实时数据。
 
 **主要支持平台：亚马逊 (Amazon), 沃尔玛 (Walmart)。同时也支持 Shopify, Shopee, eBay 等其他主流站点 (更多详情请查阅官方文档)。**
 
@@ -39,315 +65,251 @@ Scrape API 可动态兼容Amazon等各类电商页面结构变化。该接口通
 * 它本身**不包含**网络请求、IP代理、验证码处理等数据采集功能。
 * 此解析器是根据特定时间的 Amazon 页面结构编写的，虽然我们努力维护，但 Amazon 页面结构可能会发生变化，届时您可能需要自行调整代码。具体用法，参考parser_test.go
 
-
 ## 🚀 快速开始
 
-### 1. 获取 API 密钥
+### 方式一：使用开源解析模板（学习参考）
 
 ```bash
-curl -X POST http://scrapeapi.pangolinfo.com/api/v1/auth \
-  -H 'Content-Type: application/json' \
-  -d '{"email": "your-email@example.com", "password": "your-password"}'
+# 克隆仓库
+git clone https://github.com/your-repo/ecommerce-parser.git
+cd ecommerce-parser
+
+# 安装依赖
+go mod tidy
+
+# 运行测试
+go test ./parser_test.go
 ```
 
-### 2. 基础调用示例
+### 方式二：使用免费API（推荐生产）
 
-#### Amazon 商品详情抓取
-
+#### 1. 获取免费API密钥
 ```bash
-curl -X POST http://scrapeapi.pangolinfo.com/api/v1/scrape \
-  -H 'Content-Type: application/json' \
-  -H 'Authorization: Bearer YOUR_TOKEN' \
-  -d '{
-    "url": "https://www.amazon.com/dp/B0DYTF8L2W",
-    "parserName": "amzProductDetail",
-    "formats": ["json"],
-    "bizContext": {
-      "zipcode": "10041"
-    }
-  }'
+# 联系微信: Pangolin-Scraper 获取免费token
+# 或者访问: https://docs.pangolinfo.com/free-signup
 ```
 
-#### 批量数据抓取
-
-```bash
-curl -X POST http://scrapeapi.pangolinfo.com/api/v1/scrape/batch \
-  -H 'Content-Type: application/json' \
-  -H 'Authorization: Bearer YOUR_TOKEN' \
-  -d '{
-    "urls": [
-      "https://www.amazon.com/dp/PRODUCT1",
-      "https://www.amazon.com/dp/PRODUCT2"
-    ],
-    "formats": ["markdown"]
-  }'
-```
-
-### 3. Python SDK 示例
-
+#### 2. Python 快速示例
 ```python
 import requests
 import json
 
-class ScrapeAPI:
-    def __init__(self, token):
-        self.token = token
-        self.base_url = "http://scrapeapi.pangolinfo.com/api/v1/scrape"
-        self.headers = {
-            'Content-Type': 'application/json',
-            'Authorization': f'Bearer {token}'
-        }
+# 使用您的免费token
+TOKEN = "your_free_token_here"
+
+def get_amazon_product(asin):
+    """免费获取Amazon商品数据"""
+    url = "http://scrapeapi.pangolinfo.com/api/v1/scrape"
+    headers = {
+        'Authorization': f'Bearer {TOKEN}',
+        'Content-Type': 'application/json'
+    }
     
-    def scrape_amazon_product(self, asin, zipcode="10041"):
-        """抓取 Amazon 商品详情"""
-        url = f"https://www.amazon.com/dp/{asin}"
-        payload = {
-            "url": url,
-            "parserName": "amzProductDetail", 
-            "formats": ["json"],
-            "bizContext": {"zipcode": zipcode}
-        }
-        
-        response = requests.post(self.base_url, 
-                               headers=self.headers, 
-                               data=json.dumps(payload))
-        return response.json()
+    payload = {
+        "url": f"https://www.amazon.com/dp/{asin}",
+        "parserName": "amzProductDetail",
+        "formats": ["json"]
+    }
     
-    def search_amazon_keyword(self, keyword, zipcode="10041"):
-        """Amazon 关键词搜索"""
-        url = f"https://www.amazon.com/s?k={keyword}"
-        payload = {
-            "url": url,
-            "parserName": "amzKeyword",
-            "formats": ["json"],
-            "bizContext": {"zipcode": zipcode}
-        }
-        
-        response = requests.post(self.base_url,
-                               headers=self.headers,
-                               data=json.dumps(payload))
-        return response.json()
+    response = requests.post(url, headers=headers, json=payload)
+    return response.json()
 
-# 使用示例
-api = ScrapeAPI("YOUR_TOKEN")
-
-# 获取商品详情
-product_data = api.scrape_amazon_product("B0DYTF8L2W")
-print(json.dumps(product_data, indent=2, ensure_ascii=False))
-
-# 关键词搜索
-search_results = api.search_amazon_keyword("wireless headphones")
-print(json.dumps(search_results, indent=2, ensure_ascii=False))
+# 测试使用
+if __name__ == "__main__":
+    # 免费测试ASIN
+    result = get_amazon_product("B0DYTF8L2W")
+    print(json.dumps(result, indent=2, ensure_ascii=False))
 ```
 
-### 4. Node.js 示例
-
+#### 3. Node.js 示例
 ```javascript
 const axios = require('axios');
 
-class ScrapeAPI {
+class FreeEcommerceAPI {
     constructor(token) {
         this.token = token;
         this.baseURL = 'http://scrapeapi.pangolinfo.com/api/v1/scrape';
-        this.headers = {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
-        };
     }
 
-    async scrapeAmazonProduct(asin, zipcode = '10041') {
+    async getAmazonProduct(asin) {
         const payload = {
             url: `https://www.amazon.com/dp/${asin}`,
             parserName: 'amzProductDetail',
-            formats: ['json'],
-            bizContext: { zipcode }
+            formats: ['json']
         };
 
-        try {
-            const response = await axios.post(this.baseURL, payload, {
-                headers: this.headers
-            });
-            return response.data;
-        } catch (error) {
-            throw new Error(`API 调用失败: ${error.message}`);
-        }
-    }
+        const response = await axios.post(this.baseURL, payload, {
+            headers: {
+                'Authorization': `Bearer ${this.token}`,
+                'Content-Type': 'application/json'
+            }
+        });
 
-    async batchScrape(urls, formats = ['json']) {
-        const payload = {
-            urls,
-            formats
-        };
-
-        try {
-            const response = await axios.post(`${this.baseURL}/batch`, payload, {
-                headers: this.headers
-            });
-            return response.data;
-        } catch (error) {
-            throw new Error(`批量抓取失败: ${error.message}`);
-        }
+        return response.data;
     }
 }
 
-// 使用示例
-(async () => {
-    const api = new ScrapeAPI('YOUR_TOKEN');
-    
-    try {
-        // 单个商品抓取
-        const productData = await api.scrapeAmazonProduct('B0DYTF8L2W');
-        console.log('商品数据:', JSON.stringify(productData, null, 2));
-        
-        // 批量抓取
-        const batchData = await api.batchScrape([
-            'https://www.amazon.com/dp/PRODUCT1',
-            'https://www.amazon.com/dp/PRODUCT2'
-        ]);
-        console.log('批量数据:', JSON.stringify(batchData, null, 2));
-        
-    } catch (error) {
-        console.error('错误:', error.message);
+// 使用免费API
+const api = new FreeEcommerceAPI('your_free_token');
+api.getAmazonProduct('B0DYTF8L2W')
+   .then(data => console.log(data))
+   .catch(err => console.error(err));
+```
+
+## 🔧 开源解析模板详解
+
+### Amazon关键词页面解析器（开源模板）
+
+```go
+// 这是我们开源的Amazon关键词搜索解析模板
+package parser
+
+import (
+    "github.com/PuerkitoBio/goquery"
+    "strings"
+)
+
+type AmazonProduct struct {
+    ASIN      string  `json:"asin"`
+    Title     string  `json:"title"`
+    Price     float64 `json:"price"`
+    Rating    float64 `json:"rating"`
+    Reviews   int     `json:"reviews"`
+    ImageURL  string  `json:"image_url"`
+}
+
+func ParseAmazonSearchPage(html string) ([]AmazonProduct, error) {
+    doc, err := goquery.NewDocumentFromReader(strings.NewReader(html))
+    if err != nil {
+        return nil, err
     }
-})();
+    
+    var products []AmazonProduct
+    
+    // 解析商品列表
+    doc.Find("[data-asin]").Each(func(i int, s *goquery.Selection) {
+        asin, _ := s.Attr("data-asin")
+        if asin == "" {
+            return
+        }
+        
+        product := AmazonProduct{
+            ASIN:     asin,
+            Title:    s.Find("h2 a span").Text(),
+            ImageURL: s.Find("img").AttrOr("src", ""),
+        }
+        
+        // 解析价格
+        priceText := s.Find(".a-price-whole").First().Text()
+        // 价格解析逻辑...
+        
+        // 解析评分
+        ratingText := s.Find(".a-icon-alt").First().Text()
+        // 评分解析逻辑...
+        
+        products = append(products, product)
+    })
+    
+    return products, nil
+}
 ```
 
-## 📊 API 解析器说明
+## 📊 功能对比
 
-### Amazon 解析器
+| 功能特性 | 开源模板 | 免费API | 付费API |
+|----------|----------|---------|---------|
+| 解析模板获取 | ✅ 关键词搜索 | ❌ | ❌ |
+| 免费额度 | ✅ 无限制 | ✅ 200次/月 | ❌ |
+| 技术支持 | ✅ 社区支持 | ✅ 官方支持 | ✅ VIP支持 |
+| 自定义修改 | ✅ 完全自由 | ❌ | ✅ 定制服务 |
+| 反爬处理 | 🔧 需自建 | ✅ 内置 | ✅ 高级 |
+| 稳定性 | 🔧 自维护 | ✅ 99% | ✅ 99.9% |
 
-| 解析器名称 | 用途 | 返回字段 |
-|-----------|------|----------|
-| `amzProductDetail` | 商品详情页 | asin、title、price、star、rating、image、sales、seller、brand、description 等 30+ 字段 |
-| `amzKeyword` | 关键词搜索 | asin、title、price、star、rating、image、sales |
-| `amzProductOfCategory` | 分类商品列表 | asin、title、price、star、rating、image |
-| `amzProductOfSeller` | 卖家商品列表 | asin、title、price、star、rating、image |
-| `amzBestSellers` | 热销榜 | rank、asin、title、price、star、rating、image |
-| `amzNewReleases` | 新品榜 | rank、asin、title、price、star、rating、image |
+## 🤝 开源贡献指南
 
-### Walmart 解析器
+我们热烈欢迎社区贡献！
 
-| 解析器名称 | 用途 | 返回字段 |
-|-----------|------|----------|
-| `walmProductDetail` | 商品详情页 | productId、img、title、star、rating、size、color、desc、price、hasCart |
-| `walmKeyword` | 关键词搜索 | productId、image、title、star、rating、price |
+### 🌟 如何贡献
+1. **Fork** 本仓库
+2. **创建** 您的功能分支 (`git checkout -b feature/AmazingFeature`)
+3. **提交** 您的更改 (`git commit -m 'Add some AmazingFeature'`)
+4. **推送** 到分支 (`git push origin feature/AmazingFeature`)
+5. **提交** Pull Request
 
-## 🌍 支持的地区和邮编
+### 🏆 贡献者福利
+- ✅ **专属徽章** - GitHub profile展示
+- ✅ **免费API额度** - 贡献者专享
+- ✅ **技术交流群** - 与核心开发者直接沟通
+- ✅ **优先支持** - 问题优先解决
 
-| 国家 | 支持邮编 |
-|------|----------|
-| 美国 | 10041, 90001, 60601, 84104 |
-| 英国 | W1S 3AS, EH15 1LR, M13 9PL, M2 5BQ |
-| 法国 | 75000, 69001, 06000, 13000 |
-| 德国 | 80331, 10115, 20095, 60306 |
+### 🎯 我们需要的贡献
+- 🐛 **Bug修复** - 发现和修复解析问题
+- 🆕 **新平台支持** - 增加新的电商平台解析器
+- 📚 **文档完善** - 改进使用文档和示例
+- 🧪 **测试用例** - 添加更多测试覆盖
+- 🌍 **国际化** - 支持更多国家和语言
 
-## 💰 计费说明
+## 📈 使用场景
 
-| 数据格式 | 消耗积分 |
-|----------|----------|
-| markdown | 0.75 积分/次 |
-| rawHtml | 0.75 积分/次 |
-| json | 1 积分/次 |
+### 🎓 **学习研究**
+- 📖 理解网页解析原理
+- 🔬 数据科学项目
+- 🎯 爬虫技术学习
+- 📊 市场分析研究
 
-## 🔧 高级功能
+### 🚀 **个人项目**
+- 🛒 价格监控工具
+- 📈 商品趋势分析
+- 🔍 选品助手开发
+- 📱 个人数据看板
 
-### 异步处理
-
-对于大批量数据处理，我们提供异步 API：
-
-```bash
-curl -X POST https://extapi.pangolinfo.com/api/v1 \
-  -H 'Content-Type: application/json' \
-  -H 'Authorization: Bearer YOUR_TOKEN' \
-  -d '{
-    "url": "https://www.amazon.com/dp/B0DYTF8L2W",
-    "callbackUrl": "https://your-domain.com/callback",
-    "bizKey": "amzProduct",
-    "zipcode": "10041"
-  }'
-```
-
-### 自定义解析需求
-
-我们支持根据您的业务需求定制解析字段，提交需求后我们将在每周的迭代中更新解析引擎。
-
-## 🛠️ 技术特点
-
-- **智能反爬**: 内建多种反反爬策略，确保抓取成功率
-- **分布式架构**: 全球多节点部署，就近提供服务
-- **实时监控**: 24/7 系统监控，确保服务稳定性
-- **数据一致性**: 多重校验机制，保证数据准确性
-- **弹性扩容**: 自动扩容机制，应对流量高峰
+### 🏢 **商业应用**
+- 💼 竞品分析平台
+- 📊 电商数据服务
+- 🤖 自动化运营工具
+- 📈 市场研究报告
 
 ## 📚 完整文档
 
-- **API 文档**: [docs.pangolinfo.com](https://docs.pangolinfo.com)
-- **用户指南**: [Amazon Data API 用户指南](https://www.pangolinfo.com/amazon-data-api-user-guide/)
-- **官方网站**: [www.pangolinfo.com](https://www.pangolinfo.com)
+- **📖 快速开始指南**: [docs.pangolinfo.com/quick-start](https://docs.pangolinfo.com/quick-start)
+- **🔧 API参考文档**: [docs.pangolinfo.com/api](https://docs.pangolinfo.com/api)
+- **💡 最佳实践**: [docs.pangolinfo.com/best-practices](https://docs.pangolinfo.com/best-practices)
+- **❓ 常见问题**: [docs.pangolinfo.com/faq](https://docs.pangolinfo.com/faq)
 
-## 🤝 适用场景
+## 🗺️ 开发路线图
 
-### 🎯 跨境电商卖家
-- **选品分析**: 批量获取竞品数据，分析市场趋势
-- **价格监控**: 实时监控竞争对手价格变化
-- **库存管理**: 跟踪热销商品库存状态
-- **评论分析**: 获取用户评价数据，优化产品
+### 🔥 近期计划 (Q2 2025)
+- [ ] 完善Amazon解析器文档
+- [ ] 增加Walmart解析器开源代码
+- [ ] 提供Docker化部署方案
+- [ ] 添加更多编程语言SDK
 
-### 🔧 工具开发商
-- **数据服务**: 为卖家精灵、SIF 等工具提供数据支撑
-- **市场分析**: 构建商品分析和趋势预测工具
-- **自动化运营**: 开发自动定价、库存管理系统
-- **竞品监控**: 构建竞争对手监控平台
+### 🚀 长期规划 (2025年)
+- [ ] 支持更多电商平台
+- [ ] 机器学习解析优化
+- [ ] 云端部署方案
+- [ ] 可视化配置界面
 
-### 📊 数据服务商
-- **数据清洗**: 获取原始数据进行二次加工
-- **报告生成**: 生成行业分析报告
-- **API 集成**: 集成到现有数据平台
-- **定制化服务**: 为企业客户提供定制数据服务
+## ⭐ Star History
 
-## 🆚 与其他方案对比
+[![Star History Chart](https://api.star-history.com/svg?repos=your-repo/ecommerce-parser&type=Date)](https://star-history.com/#your-repo/ecommerce-parser&Date)
 
-| 特性 | 我们的 API | 自建爬虫 | 其他 API 服务 |
-|------|-----------|----------|---------------|
-| **开发成本** | ⭐⭐⭐⭐⭐ 低 | ⭐⭐ 高 | ⭐⭐⭐ 中 |
-| **维护成本** | ⭐⭐⭐⭐⭐ 零维护 | ⭐ 持续维护 | ⭐⭐⭐ 中等 |
-| **稳定性** | ⭐⭐⭐⭐⭐ 99.9% | ⭐⭐ 不稳定 | ⭐⭐⭐⭐ 较好 |
-| **数据质量** | ⭐⭐⭐⭐⭐ 结构化 | ⭐⭐⭐ 需处理 | ⭐⭐⭐⭐ 较好 |
-| **反爬能力** | ⭐⭐⭐⭐⭐ 专业 | ⭐⭐ 需自建 | ⭐⭐⭐ 一般 |
-| **扩展性** | ⭐⭐⭐⭐⭐ 弹性 | ⭐⭐ 受限 | ⭐⭐⭐ 中等 |
+## 📄 开源协议
 
-## 📞 联系我们
-
-### 商务合作
-- **邮箱**: charon@pangolinfo.com
-- **公司**: PANGOLIN INFO TECH PTE. LTD.
-- ### 微信咨询
-- **微信号**: Pangolin-Scraper
-- **添加时请备注**: GitHub-API咨询
-
-### 技术支持
-- **邮箱**: shiyang@pangolinfo.com
-- **响应时间**: 工作日 24 小时内回复
-
-### 在线支持
-- **官网**: [www.pangolinfo.com](https://www.pangolinfo.com)
-- **文档**: [docs.pangolinfo.com](https://docs.pangolinfo.com)
-
-## 📝 开源贡献
-
-我们欢迎社区贡献和反馈：
-
-1. **Issues**: 提交 bug 报告或功能请求
-2. **文档改进**: 帮助完善文档和示例代码
-3. **SDK 开发**: 贡献不同语言的 SDK
-4. **使用案例**: 分享您的使用经验和最佳实践
-
-## 📄 许可证
-
-本项目仅用于展示 API 功能和使用方法，具体服务条款请参考官方协议。
+本项目采用 [MIT License](LICENSE) 开源协议。
 
 ---
 
-⭐ **如果这个项目对您有帮助，请给我们一个 Star！**
+## 🎉 立即开始
 
-**让数据采集变得简单，让跨境电商更高效！** 🚀
+**不要犹豫，立即获取您的免费资源！**
+
+1. ⭐ **给项目点个Star**
+2. 📱 **添加微信**: `Pangolin-Scraper` (备注：GitHub免费)
+3. 🚀 **开始您的数据采集之旅**
+
+**让数据采集变得简单，让开源精神传递！** 🌟
+
+---
+
+*如果这个项目对您有帮助，请不要忘记给我们一个 ⭐Star！这是对我们最大的鼓励！*
