@@ -19,6 +19,12 @@
   - 添加备注：`GitHub免费额度`
   - 工作时间内秒回，提供技术支持
 
+<div>
+  <img src="wechat-qrcode.png" alt="微信二维码" width="200"/>
+  <br>
+  <em>扫码添加微信获取免费资源</em>
+</div>
+
 #### 📧 邮件联系
 - **技术支持**: shiyang@pangolinfo.com
 - **商务合作**: charon@pangolinfo.com
