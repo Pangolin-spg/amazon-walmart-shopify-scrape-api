@@ -26,13 +26,14 @@
 </div>
 
 #### 📧 邮件联系
-- **技术支持**: shiyang@pangolinfo.com
+- **技术支持**: support@pangolinfo.com
 - **商务合作**: charon@pangolinfo.com
 - **响应时间**: 24小时内回复
 
 #### 🌐 在线资源
 - **项目文档**: [docs.pangolinfo.com](https://docs.pangolinfo.com)
 - **官方网站**: [www.pangolinfo.com](https://www.pangolinfo.com)
+- **免费 API key**[tool.pangolinfo.com](https://tool.pangolinfo.com)
 
 ---
 
