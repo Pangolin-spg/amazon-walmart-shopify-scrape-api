@@ -33,7 +33,7 @@
 #### 🌐 在线资源
 - **项目文档**: [docs.pangolinfo.com](https://docs.pangolinfo.com)
 - **官方网站**: [www.pangolinfo.com](https://www.pangolinfo.com)
-- **免费 API key**[tool.pangolinfo.com](https://tool.pangolinfo.com)
+- **免费 API key**:[tool.pangolinfo.com](https://tool.pangolinfo.com)
 
 ---
 
