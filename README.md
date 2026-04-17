@@ -1,4 +1,4 @@
-# 🚀 电商数据采集 API - 免费Amazon/Walmart数据提取工具
+# 🚀 电商数据采集 API - 免费Amazon/Walmart数据采集工具
 
 [![API Status](https://img.shields.io/badge/API-在线-brightgreen)](https://docs.pangolinfo.com)
 [![支持平台](https://img.shields.io/badge/支持平台-Amazon%20|%20Walmart%20|%20eBay%20|%20Shopify-blue)](https://www.pangolinfo.com)
@@ -39,8 +39,8 @@
 
 ## 📖 项目简介
 
-**Pangolin Scrape API by PANGOLIN INFO TECH PTE. LTD.是一款专为跨境电商卖家、数据服务商和工具开发者设计的强大、稳定、高效的数据采集API。**
-Scrape API 可动态兼容Amazon等各类电商页面结构变化。该接口通过智能识别算法自动识别并提取相关产品数据，如标题、折扣、价格、可用性和描述等。开发者无需关注目标页面DOM结构变更，系统将持续维护数据解析逻辑，显著降低电商数据集成与维护成本，支持通过API密钥快速调用并获取实时数据。
+**Pangolinfo Scrape API by PANGOLIN INFO TECH PTE. LTD.是一款专为跨境电商卖家、数据服务商和工具开发者设计的强大、稳定、高效的数据采集API。**
+Scrape API 可动态兼容Amazon等各类电商页面结构变化。该接口通过智能识别算法自动识别并提取相关产品数据，如标题、折扣、价格、可用性和描述、评论等。开发者无需关注目标页面DOM结构变更，系统将持续维护数据解析逻辑，显著降低电商数据集成与维护成本，支持通过API密钥快速调用并获取实时数据。
 
 **主要支持平台：亚马逊 (Amazon), 沃尔玛 (Walmart)。同时也支持 Shopify, Shopee, eBay 等其他主流站点 (更多详情请查阅官方文档)。**
 
@@ -56,7 +56,7 @@ Scrape API 可动态兼容Amazon等各类电商页面结构变化。该接口通
 
 | 平台 | 支持页面类型 | 数据字段 |
 |------|-------------|----------|
-| **Amazon** | 商品详情、关键词搜索、分类列表、卖家商品、热销榜、新品榜 | ASIN码、标题、价格、评分、评论数、图片、销量、卖家信息、商品描述等 30+ 字段 |
+| **Amazon** | 商品详情、关键词搜索、分类列表、卖家商品、热销榜、新品榜 | ASIN码、标题、价格、评分、评论、评论数、图片、销量、卖家信息、商品描述等 30+ 字段 |
 | **Walmart** | 商品详情、关键词搜索 | 商品ID、标题、价格、评分、评论数、图片、尺寸、颜色等 |
 | **eBay** | 商品详情、搜索结果 | 商品ID、标题、价格、卖家信息、图片等 |
 | **Shopify** | 商品详情、店铺数据 | 商品信息、库存、价格、变体等 |
